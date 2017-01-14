@@ -25,7 +25,7 @@ Reinforcement learning agent that uses a [WebLearn] model to approximate the [Q-
 
 Q-learning is an **off-policy** algorithm, which means it can learn about the environment using trajectories where the actions weren't sampled from the agent (i.e. human demonstrator). I'll probably add a demo of this soon.
 
-Q-learning is also a **model-free** algorithm, which means it's not doing any planning or tree search. It's basically just estimating the discounted future rewards it expects to see if takes an action **a** in state **s**, then taking the action with the highest expected value (or, sometimes, taking an action at random to explore some new part of the state space).
+Q-learning is also a **model-free** algorithm, which means it's not doing any planning or tree search. It's basically just estimating the discounted future rewards it expects to see if takes an action **a** in state **s** and follows the optimal policy from there.
 
 This implementation uses experience replay and temporal difference error clamping, but currently does **not** do fitted Q iteration ("target" network) or double DQN.
 
