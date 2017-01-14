@@ -93,7 +93,7 @@ returns a number `action` (integer specifying index of action to take).
 
 - `observation`: [ndarray]. some representation of the state of your environment. required.
 - `reward`: number. this is what the agent will try to maximize. required.
-- `done`: boolean.. is this state the last state of an episode? optional.
+- `done`: boolean. is this state the last state of an episode? optional.
 
 ### agent.learn()
 
@@ -104,3 +104,4 @@ makes the agent do some learning. this can take a long time.
 [WebLearn]: https://github.com/keppel/weblearn
 [Q-function]: https://en.wikipedia.org/wiki/Q-learning
 [OpenAI's gym]: https://github.com/openai/gym
+[ndarray]: https://github.com/scijs/ndarray
