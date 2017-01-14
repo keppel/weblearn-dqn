@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/keppel/weblearn-dqn"><img src="https://cloud.githubusercontent.com/assets/1269291/21950583/6d22659c-d9b1-11e6-8fb4-2d61b196b688.gif" alt="WebLearn DQN" width="200"></a>
+  <a href="https://github.com/keppel/weblearn-dqn"><img src="https://cloud.githubusercontent.com/assets/1269291/21950583/6d22659c-d9b1-11e6-8fb4-2d61b196b688.gif" alt="WebLearn DQN"></a>
   <br>
   WebLearn DQN
   <br>
