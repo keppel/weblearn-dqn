@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/keppel/weblearn-dqn"><img src="https://cloud.githubusercontent.com/assets/1269291/21950583/6d22659c-d9b1-11e6-8fb4-2d61b196b688.gif" alt="WebLearn DQN" width="400" style="border: 1px solid black;"></a>
+  <a href="https://github.com/keppel/weblearn-dqn"><img src="https://cloud.githubusercontent.com/assets/1269291/21950583/6d22659c-d9b1-11e6-8fb4-2d61b196b688.gif" alt="WebLearn DQN" width="200"></a>
   <br>
   WebLearn DQN
   <br>
@@ -58,13 +58,6 @@ model.add(Linear(STATE_SIZE, 20))
 let agent = DQN({
   model: model, // weblearn model. required.
   numActions: NUM_ACTIONS, // number of actions. required.
-  epsilon: 1, // initial probability of selecting action at random (for exploration). optional.
-  memorySize: 10000, // how many of our most experiences to remember for learning. optional.
-  maxError: 1, // optionally limit the absolute value of the td-error from a single experience. false for no limit. optional.
-  finalEpsilon: .1, // probability of selecting an action at random after `epsilonDecaySteps` steps of training. optional.
-  epsilonDecaySteps: 100000, // on what timestep should we reach `epsilon === finalEpsilon`? optional.
-  learnBatchSize: 32, // how many transitions should we learn from when we call agent.learn()? optional.
-  gamma: .99 // factor used for discounting rewards far in the future vs. rewards sooner. optional.
 })
 
 // get these from your environment:
@@ -81,6 +74,32 @@ let action = agent.step(observation, reward, done)
 agent.learn()
 
 ```
+
+## let agent = DQN(opts)
+
+`opts` should be an object with some of the following properties:
+- `model`: [WebLearn] model. required.
+- `numActions`: number.  number of actions. required.
+- `epsilon`: number.  initial probability of selecting action at random (for exploration). optional.
+- `memorySize`: number.  how many of our most experiences to remember for learning. optional.
+- `maxError`: number or `false`. limit the absolute value of the td-error from a single experience. false for no limit. optional.
+- `finalEpsilon`: number.  probability of selecting an action at random after `epsilonDecaySteps` steps of training. optional.
+- `epsilonDecaySteps`: number. on what timestep should we reach `epsilon === finalEpsilon`? optional.
+- `learnBatchSize`: number.  how many transitions should we learn from when we call `agent.learn()`? optional.
+- `gamma`: number. parameter used for discounting rewards far in the future vs. rewards sooner. optional.
+
+### let action = agent.step(observation, reward, done)
+returns a number `action` (integer specifying index of action to take).
+
+- `observation`: [ndarray]. some representation of the state of your environment. required.
+- `reward`: number. this is what the agent will try to maximize. required.
+- `done`: boolean.. is this state the last state of an episode? optional.
+
+### agent.learn()
+
+makes the agent do some learning. this can take a long time.
+
+🤖
 
 [WebLearn]: https://github.com/keppel/weblearn
 [Q-function]: https://en.wikipedia.org/wiki/Q-learning
