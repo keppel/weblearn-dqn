@@ -71,7 +71,7 @@ let action = agent.step(observation, reward, done)
 // call this whenever ya wanna do a learn step.
 // you can call this after each `agent.step()`, but you can also call it more or less often.
 // just keep in mind, depending on the size of your model, this may block for a relatively long time.
-agent.learn()
+let loss = agent.learn()
 
 ```
 
@@ -95,9 +95,9 @@ returns a number `action` (integer specifying index of action to take).
 - `reward`: number. this is what the agent will try to maximize. required.
 - `done`: boolean. is this state the last state of an episode? optional.
 
-### agent.learn()
+### let loss = agent.learn()
 
-makes the agent do some learning. this can take a long time.
+makes the agent do some learning. this can take a long time. returns the loss from the learn step. the loss from a single learn step will be pretty noisy since experiences are sampled from memory at random, but if you average over multiple `.learn()`s, that might be useful.
 
 🤖
 

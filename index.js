@@ -123,6 +123,7 @@ class DQN {
       this.model.backward(gradInputs)
       this.model.update()
     })
+    return loss
   }
 }
 
