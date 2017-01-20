@@ -98,6 +98,7 @@ class DQN {
 
   learn() {
     let transitions = getRandomSubarray(this.transitions, this.learnBatchSize)
+    let batchLoss = 0
     transitions.forEach((t, k) => {
       // q(s, a) -> r + gamma * max_a' q(s', a')
       const qPrime = copy(this.model.forward(t[3]))
@@ -111,7 +112,7 @@ class DQN {
       }
 
       const [loss, gradInputs] = this.model.criterion(q, target)
-
+      batchLoss += loss
       if(this.maxError){
         gradInputs.data.forEach((v, k) => {
           if(Math.abs(v) > this.maxError){
@@ -123,7 +124,8 @@ class DQN {
       this.model.backward(gradInputs)
       this.model.update()
     })
-    return loss
+
+    return transitions.length ? (batchLoss / transitions.length) : 0
   }
 }
 
